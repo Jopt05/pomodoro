@@ -1,5 +1,3 @@
-import React from 'react'
-
 interface ModeSelectorProps {
     onChangeMode: (mode: number) => void
     selectedMode: number
