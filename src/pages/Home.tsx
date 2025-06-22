@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import ModeSelector from '../components/ModeSelector';
 import Timer from '../components/Timer';
 
