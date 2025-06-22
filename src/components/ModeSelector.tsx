@@ -17,7 +17,7 @@ const ModeSelector = ({ onChangeMode, selectedMode }: ModeSelectorProps) => {
 
   return (
     <div
-        className='flex md:w-[500px] w-[95%] gap-1 bg-[#151932] relative items-center mt-8 rounded-full p-1'
+        className='flex md:w-[500px] w-[300px] gap-1 bg-[#151932] relative items-center mt-8 rounded-full p-1'
     >
         <div
             className={`flex flex-1/3 md:py-6 md:px-10 py-3 px-2 absolute bg-red-400 rounded-full z-10 transition-all ${getMovementPercentage()}`}
