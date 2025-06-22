@@ -7,39 +7,44 @@ let timer: number | undefined;
 const Home = () => {
 
     const [selectedMode, setSelectedMode] = useState(0);
-    const [secondsLeft, setSecondsLeft] = useState(1500)
     const [hasStarted, setHasStarted] = useState(false);
-
-    useEffect(() => {
-        if( !hasStarted ) return;
-      document.title = `(${formatTimeLeft(secondsLeft)}) Pomodoro`;
-    }, [secondsLeft])
+    const [timerState, setTimerState] = useState({
+        minutes: 25,
+        seconds: 0
+    })
 
     const handleChangeMode = (value: number) => {
         setHasStarted(false);
         const timerMap = [1500, 900, 1800];
         clearInterval(timer);
-        setSecondsLeft(timerMap[value]);
+        setTimerState({
+            minutes: Math.floor(timerMap[value] / 60),
+            seconds: timerMap[value] % 60
+        });
         setSelectedMode(value);
-    }
-
-    const formatTimeLeft = (seconds: number) => {
-        return(`${Math.floor(seconds / 60)}:${
-                (seconds % 60 > 9)
-                ? seconds % 60
-                : '0' + seconds % 60
-            }`)
     }
 
     const startTimer = () => {
         if (hasStarted) return;
         setHasStarted(true);
         timer = setInterval(() => {
-            setSecondsLeft(s => s - 1);
-            if (secondsLeft === 0) {
-                clearInterval(timer);
-                setHasStarted(false);
-            }
+            setTimerState(s => {
+                if (s.seconds === 0) {
+                    if (s.minutes === 0) {
+                        clearInterval(timer);
+                        setHasStarted(false);
+                        return s;
+                    }
+                    return {    
+                        minutes: s.minutes - 1,
+                        seconds: 59
+                    }
+                }
+                return {
+                    ...s,
+                    seconds: s.seconds - 1
+                }
+            });
         }, 1000);
     }
 
@@ -61,8 +66,7 @@ const Home = () => {
         <Timer 
             hasStarted={hasStarted} 
             onClick={() => (hasStarted) ? stopTimer() : startTimer() } 
-            secondsLeft={secondsLeft} 
-            formatTimeLeft={formatTimeLeft} 
+            timerState={timerState}
         />
     </div>
   )

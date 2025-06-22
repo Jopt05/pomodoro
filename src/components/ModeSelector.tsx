@@ -11,16 +11,16 @@ const ModeSelector = ({ onChangeMode, selectedMode }: ModeSelectorProps) => {
         } else if (selectedMode === 1) {
             return 'left-[35%]';
         } else {
-            return 'left-[68%]';
+            return 'left-[67%]';
         }
     }
 
   return (
     <div
-        className='flex md:w-[500px] w-[300px] gap-1 bg-[#151932] relative items-center mt-8 rounded-full p-1'
+        className='flex md:w-[550px] w-[350px] gap-1 bg-[#151932] relative items-center mt-8 rounded-full p-1'
     >
         <div
-            className={`flex flex-1/3 md:py-6 md:px-10 py-3 px-2 absolute bg-red-400 rounded-full z-10 transition-all ${getMovementPercentage()}`}
+            className={`flex flex-1/3 md:py-6 md:px-10 py-3 px-3 absolute bg-red-400 rounded-full z-10 transition-all ${getMovementPercentage()}`}
         >
             <p className='opacity-0'>
                 pomodoro
@@ -31,7 +31,7 @@ const ModeSelector = ({ onChangeMode, selectedMode }: ModeSelectorProps) => {
             onClick={() => onChangeMode(0)}
         >
             <p
-                className={`w-full md:py-6 md:px-10 py-3 px-2 font-bold text-sm rounded-full text-center m-0 text-[#62667f] z-20 ${(selectedMode === 0) && 'text-[#151932]'}`}
+                className={`w-full md:py-6 md:px-10 py-3 px-3 font-bold text-sm rounded-full text-center m-0 text-[#62667f] z-20 ${(selectedMode === 0) && 'text-[#151932]'}`}
             >
                 pomodoro
             </p>
@@ -41,7 +41,7 @@ const ModeSelector = ({ onChangeMode, selectedMode }: ModeSelectorProps) => {
             onClick={() => onChangeMode(1)}
         >
             <p
-                className={`w-full md:py-6 md:px-10 py-3 px-2 font-bold text-sm rounded-full text-center m-0 text-[#62667f] z-20 ${(selectedMode === 1) && 'text-[#151932]'}`}
+                className={`w-full md:py-6 md:px-10 py-3 px-3 font-bold text-sm rounded-full text-center m-0 text-[#62667f] z-20 ${(selectedMode === 1) && 'text-[#151932]'}`}
             >
                 short break
             </p>
@@ -51,7 +51,7 @@ const ModeSelector = ({ onChangeMode, selectedMode }: ModeSelectorProps) => {
             onClick={() => onChangeMode(2)}
         >
             <p
-                className={`w-full md:py-6 md:px-10 py-3 px-2 font-bold text-sm rounded-full text-center m-0 text-[#62667f] z-20 ${(selectedMode === 2) && 'text-[#151932]'}`}
+                className={`w-full md:py-6 md:px-10 py-3 px-3 font-bold text-sm rounded-full text-center m-0 text-[#62667f] z-20 ${(selectedMode === 2) && 'text-[#151932]'}`}
             >
                 long break
             </p>
